@@ -46,5 +46,10 @@ module.exports = function (environment) {
     // here you can enable a production-specific feature
   }
 
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: ENV.APP.apiHost + '/login', // Server endpoint to send authenticate request
+    refreshAccessTokens: false,
+  };
+
   return ENV;
 };
