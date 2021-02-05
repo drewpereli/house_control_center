@@ -1,5 +1,12 @@
 {{page-title "Drew's House"}}
+<div class="bg-black text-white flex flex-col h-screen w-screen justify-between">
+  <div class="w-full flex items-center h-16">
+    {{#if this.session.isAuthenticated}}
+      <span role="button" {{on "click" this.logOut}} class="ml-auto mr-8 hover:underline">Log Out</span>
+    {{/if}}
+  </div>
 
-<div>
-  {{outlet}}
+  <div class="flex-grow">
+    {{outlet}}
+  </div>
 </div>
