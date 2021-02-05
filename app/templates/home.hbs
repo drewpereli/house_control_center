@@ -1,4 +1,10 @@
 {{page-title "Home"}}
 {{outlet}}
 
-home
+<div>
+  {{#each @model.boards as |board|}}
+    <div>
+      {{board.id}}: {{board.ipAddress}}
+    </div>
+  {{/each}}
+</div>

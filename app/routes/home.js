@@ -7,4 +7,9 @@ export default class HomeRoute extends Route {
   beforeModel(transition) {
     this.session.requireAuthentication(transition, 'login');
   }
+
+  async model() {
+    let boards = await this.store.findAll('board');
+    return { boards };
+  }
 }
