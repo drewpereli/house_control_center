@@ -2,12 +2,21 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const CssImport = require('postcss-import');
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     postcssOptions: {
       compile: {
-        plugins: [require('tailwindcss')('./tailwind.config.js')],
+        plugins: [
+          {
+            module: CssImport,
+            options: {
+              path: ['node_modules'],
+            },
+          },
+          require('tailwindcss')('./tailwind.config.js'),
+        ],
       },
     },
   });
