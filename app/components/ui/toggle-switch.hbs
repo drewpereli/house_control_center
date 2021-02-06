@@ -1,0 +1,7 @@
+<div class="flex items-center">
+  <span>{{@onLabel}}</span>
+  <div class="relative h-6 w-12 {{if @on "bg-green-800 translate-x-6" "bg-gray-800"}} rounded-full" {{on "click" this.toggle}} role="button">
+    <div class="absolute w-1/2 h-full rounded-full transform transition-transform duration-100 {{if @on "bg-green-400 translate-x-6" "bg-gray-600"}}" />
+  </div>
+  <span>{{@offLabel}}</span>
+</div>

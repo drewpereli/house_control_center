@@ -5,6 +5,11 @@
     <span role="button" {{on "click" (fn (mut this.applianceEditorOpen) true)}} class="hover:underline mr-8">Edit Appliances</span>
     <span role="button" {{on "click" this.logOut}} class="hover:underline">Log Out</span>
   </div>
+  <div class="p-8">
+    {{#each @model.appliances as |appliance|}}
+      <ToggleableAppliance @appliance={{appliance}} />
+    {{/each}}
+  </div>
 </div>
 
 

@@ -6,7 +6,7 @@ import { action } from '@ember/object';
 export default class HomeController extends Controller {
   @service session;
 
-  @tracked applianceEditorOpen = true;
+  @tracked applianceEditorOpen = false;
 
   @action
   logOut() {
