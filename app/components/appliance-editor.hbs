@@ -1,5 +1,8 @@
-<div ...attributes>
+<div class="w-100" ...attributes>
+  <div class="mb-4">
+    <Ui::Button @onClick={{this.createNewAppliance}} class="bg-green-400 ml-auto text-gray-800">+ New</Ui::Button>
+  </div>
   {{#each @appliances as |appliance|}}
-    <EditableAppliance @appliance={{appliance}} />
+    <EditableAppliance @appliance={{appliance}} class="mb-4" />
   {{/each}}
 </div>
