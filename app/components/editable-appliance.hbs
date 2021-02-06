@@ -1,0 +1,13 @@
+<div class="px-4 py-2 flex items-center justify-between" ...attributes>
+  {{#if this.isEditingOrNew}}
+    <Ui::Input @value={{@appliance.name}} @onInput={{fn (mut @appliance.name)}} class="mr-8" />
+
+    <div>
+      <Ui::Button @onClick={{perform this.save}} class="bg-green-500 text-black">Save</Ui::Button>
+      <Ui::Button @onClick={{this.cancelEdits}} class="bg-gray-500 text-black">Cancel</Ui::Button>
+    </div>
+  {{else}}
+    <span class="text-gray-400 mr-8">{{@appliance.name}}</span>
+    <Ui::Button @onClick={{fn (mut this.isEditing) true}} class="bg-gray-500 text-black">Edit</Ui::Button>
+  {{/if}}
+</div>

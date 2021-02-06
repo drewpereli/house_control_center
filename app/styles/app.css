@@ -4,3 +4,5 @@
 
 @import "ember-modal-dialog/ember-modal-structure.css";
 @import "ember-modal-dialog/ember-modal-appearance.css";
+
+@import "./modal-overrides.css"

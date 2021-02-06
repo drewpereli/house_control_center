@@ -1,10 +1,15 @@
 {{page-title "Home"}}
-{{outlet}}
 
 <div>
-  {{#each @model.boards as |board|}}
-    <div>
-      {{board.id}}: {{board.ipAddress}}
-    </div>
-  {{/each}}
+  <div class="w-full flex items-center justify-end h-16 px-8">
+    <span role="button" {{on "click" (fn (mut this.applianceEditorOpen) true)}} class="hover:underline mr-8">Edit Appliances</span>
+    <span role="button" {{on "click" this.logOut}} class="hover:underline">Log Out</span>
+  </div>
 </div>
+
+
+{{#if this.applianceEditorOpen}}
+  <ModalDialog @onClose={{fn (mut this.applianceEditorOpen) false}}>
+    <ApplianceEditor @appliances={{@model.appliances}} />
+  </ModalDialog>
+{{/if}}

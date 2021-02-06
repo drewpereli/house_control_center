@@ -9,7 +9,11 @@ export default class HomeRoute extends Route {
   }
 
   async model() {
-    let boards = await this.store.findAll('board');
-    return { boards };
+    let [boards, appliances] = await Promise.all([
+      this.store.findAll('board'),
+      this.store.findAll('appliance'),
+    ]);
+
+    return { boards, appliances };
   }
 }
