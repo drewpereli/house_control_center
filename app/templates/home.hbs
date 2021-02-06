@@ -10,6 +10,6 @@
 
 {{#if this.applianceEditorOpen}}
   <ModalDialog @onClose={{fn (mut this.applianceEditorOpen) false}}>
-    <ApplianceEditor @appliances={{@model.appliances}} />
+    <ApplianceEditor @appliances={{@model.appliances}} class="w-1/2-screen" />
   </ModalDialog>
 {{/if}}

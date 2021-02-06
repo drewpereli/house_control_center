@@ -1,13 +1,47 @@
-<div class="px-4 py-2 flex items-center justify-between" ...attributes>
+<div class="py-2 flex items-center justify-between" ...attributes>
   {{#if this.isEditingOrNew}}
-    <Ui::Input @value={{@appliance.name}} @onInput={{fn (mut @appliance.name)}} class="mr-8" />
+    <div class="flex items-center">
+      <Ui::Input @value={{@appliance.name}} @onInput={{fn (mut @appliance.name)}} @placeholder="name" class="mr-8" />
+
+      <PowerSelect
+        @selected={{@appliance.type}}
+        @options={{this.typeOptions}}
+        @onChange={{fn (mut @appliance.type)}}
+        @triggerClass="w-32 h-8 focus:outline-none mr-4"
+        @placeholder="type"
+        as |option|
+      >
+        {{option}}
+      </PowerSelect>
+
+      <PowerSelect
+        @selected={{this.selectedBoardOption}}
+        @options={{this.boardOptions}}
+        @onChange={{this.selectBoardOption}}
+        @triggerClass="w-32 h-8 focus:outline-none mr-4"
+        @placeholder="board"
+        as |option|
+      >
+        {{option.label}}
+      </PowerSelect>
+    </div>
 
     <div>
-      <Ui::Button @onClick={{perform this.save}} class="bg-green-500 text-black">Save</Ui::Button>
+      <Ui::Button @onClick={{perform this.saveAppliance}} class="bg-green-500 text-black mr-1">Save</Ui::Button>
+      <Ui::Button @onClick={{perform this.destroyAppliance}} class="bg-red-800 text-black mr-1">Delete</Ui::Button>
       <Ui::Button @onClick={{this.cancelEdits}} class="bg-gray-500 text-black">Cancel</Ui::Button>
     </div>
   {{else}}
-    <span class="text-gray-400 mr-8">{{@appliance.name}}</span>
+    <div class="mr-8 flex text-gray-400">
+      <div class=" mr-4 w-56 font-medium">{{@appliance.name}} ({{@appliance.type}})</div>
+      <span>
+        {{#if @appliance.board}}
+          Connected to board {{@appliance.board.id}}
+        {{else}}
+          Not connected to a board yet
+        {{/if}}
+      </span>
+    </div>
     <Ui::Button @onClick={{fn (mut this.isEditing) true}} class="bg-gray-500 text-black">Edit</Ui::Button>
   {{/if}}
 </div>
